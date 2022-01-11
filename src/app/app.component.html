@@ -1,3 +1,8 @@
-<h1>{{title}}</h1>
-<input type="text" [(ngModel)]="title" (change)="handleChange('hello')" />
-<button (click)="handleSubmit('hello')">Submit</button>
+<div class="todoapp">
+    <h1>{{title}}</h1>
+    <ul class="todo-list">
+        <li class="todo-item" *ngFor="let todo of todos">{{todo}}</li>
+    </ul>
+    <input type="text" [(ngModel)]="todoTitle" placeholder="What do you want to do?" />
+    <button (click)="handleSubmit()">Submit</button>
+</div>

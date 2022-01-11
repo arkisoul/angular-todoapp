@@ -6,13 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Angular todoapp';
+  public title = 'Angular Todoapp';
+  public todoTitle: string = '';
+  public todos: string[] = ['Learn Nodejs', 'Learn Angular', 'Learn Mongodb', 'Learn Expressjs'];
+  // todos: {id: number, todo: string, isCompleted: boolean}[] = [
 
-  handleChange(value: string) {
-    console.log(value);
-  }
+  // ]
 
-  handleSubmit(value: string) {
-    console.log(value);
+  public handleSubmit() {
+    console.log(this.todoTitle);
+    this.todos.push(this.todoTitle);
+    this.todoTitle = '';
   }
 }

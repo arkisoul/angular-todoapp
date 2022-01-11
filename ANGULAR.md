@@ -1,3 +1,16 @@
+## Common angular terms
+1. Workspace
+2. Project
+3. Modules
+    a) Types of module based on functionality
+        i) root module (most commonly the AppModule)
+        ii) feature module
+        iii) shared module
+    b) Built-in modules
+        i) CommonModule
+        ii) FormsModule
+        iii) ReactiveFormsModule 
+
 ## Module
 Reference [here](https://angular.io/guide/architecture-modules)
 
