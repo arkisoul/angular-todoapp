@@ -16,6 +16,8 @@ export class AppComponent {
   public todoTitle: string = '';
   public todos: Todo[] = [];
   textColor: string = 'blue';
+  mongo: string = 'mongo';
+  techs = [{key: 'mongo', value: 'Learning Mongodb'}, {key: 'angular', value: 'Learning Angular'}]
 
   public handleSubmit() {
     console.log(this.todoTitle);

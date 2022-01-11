@@ -33,10 +33,16 @@ ngSwitch
 ngClass
 ngStyle
 
-ngModel
 ### Routing
 ### Pipe
 
 ## Data binding
 1. One way data binding - Using component class properties or/and methods in template provides one way data binding.
 2. Two way data binding - Using input/form elements we can achieve two way data binding. The template and component class propery is in sync.
+
+### Interpolation
+One way data binding {{}}
+### Event binding
+We can attach events to an element. We can pass the data as well as params to the component class.
+### Two data binding
+using ngModel

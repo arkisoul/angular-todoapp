@@ -7,6 +7,7 @@ import { MatSliderModule } from '@angular/material/slider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TodoModule } from './todo/todo.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { AppComponent } from './app.component';
     MatSliderModule,
     FormsModule,
     CommonModule,
+    TodoModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

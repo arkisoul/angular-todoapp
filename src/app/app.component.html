@@ -4,7 +4,7 @@
     </header>
     <section class="main">
         <ul class="todo-list" *ngIf="todos.length > 0; else noTodoBlock">
-            <li class="todo-item" *ngFor="let todo of todos; let i = index; first as isFirst; last as isLast" [class]="{class1: true, class2: todo.isCompleted}" [style.color]="textColor">{{todo.id}}. {{todo.title}}</li>
+            <li class="todo-item" *ngFor="let todo of todos; let i = index; first as isFirst; last as isLast" [ngClass]="{class1: true, class2: todo.isCompleted}" [ngStyle]="{color: textColor}">{{todo.id}}. {{todo.title}}</li>
         </ul>
         <!-- [class.completed]="todo.isCompleted" -->
         <ng-template #noTodoBlock>
@@ -12,5 +12,12 @@
         </ng-template>
         <input type="text" [(ngModel)]="todoTitle" placeholder="What do you want to do?" />
         <button (click)="handleSubmit()">Submit</button>
+        <div [ngSwitch]="todoTitle">
+            <ng-container *ngFor="let tech of techs">
+                <div *ngSwitchCase="tech.key">{{tech.value}}</div>
+            </ng-container>
+            <div *ngSwitchDefault>Learning MEAN stack</div>
+        </div>
     </section>
+    <todoapp-todos></todoapp-todos>
 </section>
