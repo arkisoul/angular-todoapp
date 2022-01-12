@@ -10,14 +10,13 @@ export class TodoHeaderComponent implements OnInit {
   @Input('appTitle') title!: string;
   @Input() newTodo!: Todo;
 
-  @Output() createNewTodo: EventEmitter<string> = new EventEmitter();
+  @Output('createTodo') createNewTodo: EventEmitter<null> = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
 
   onKeyupEnter() {
-    console.log('Enter key pressed', this.newTodo);
-    this.createNewTodo.emit('hello from child');
+    this.createNewTodo.emit();
   }
 }

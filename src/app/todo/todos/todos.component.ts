@@ -16,7 +16,8 @@ export class TodosComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onCreateNewTodo(value: string) {
-    console.log('on create new todo in parent', this.newTodo, value);
+  onCreateNewTodo() {
+    this.todos.push(this.newTodo);
+    this.newTodo = new Todo();
   }
 }

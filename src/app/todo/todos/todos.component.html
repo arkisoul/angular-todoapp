@@ -1,8 +1,12 @@
 <section class="todoapp">
-    <todoapp-todo-header [appTitle]="title" [newTodo]="newTodo" (createNewTodo)="onCreateNewTodo($event)"></todoapp-todo-header>
-    <!-- title, input in header component -->
-    <todoapp-todo-list></todoapp-todo-list>
-    <!-- todos in list component -->
-    <todoapp-todo-footer></todoapp-todo-footer>
-    <!-- todos summary in footer comp -->
+  <todoapp-todo-header
+    [appTitle]="title"
+    [newTodo]="newTodo"
+    (createTodo)="onCreateNewTodo()"
+  ></todoapp-todo-header>
+  <todoapp-todo-list [todos]="todos"></todoapp-todo-list>
+  <todoapp-todo-footer
+    [todosLeft]="todos.length"
+    (createNewTodo)="onCreateNewTodo()"
+  ></todoapp-todo-footer>
 </section>
