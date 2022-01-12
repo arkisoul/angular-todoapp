@@ -2,7 +2,7 @@
     <header class="header">
         <h1>{{title}}</h1>
     </header>
-    <section class="main">
+    <section class="todos">
         <ul class="todo-list" *ngIf="todos.length > 0; else noTodoBlock">
             <li class="todo-item" *ngFor="let todo of todos; let i = index; first as isFirst; last as isLast" [ngClass]="{class1: true, class2: todo.isCompleted}" [ngStyle]="{color: textColor}">{{todo.id}}. {{todo.title}}</li>
         </ul>
