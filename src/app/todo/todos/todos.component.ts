@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 
 import { Todo } from '../models/todo';
 
@@ -7,14 +13,27 @@ import { Todo } from '../models/todo';
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent implements OnInit, OnDestroy, AfterViewInit {
   public title: string = 'Todos';
   public newTodo: Todo = new Todo();
   public todos: Todo[] = [];
+  public showFooter: boolean = true;
 
-  constructor() {}
+  constructor() {
+    console.log('constructor');
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('oninit');
+  }
+
+  ngOnDestroy(): void {
+    console.log('ondestroy');
+  }
+
+  ngAfterViewInit(): void {
+    console.log('afterviewinit');
+  }
 
   onCreateNewTodo() {
     this.todos.push(this.newTodo);

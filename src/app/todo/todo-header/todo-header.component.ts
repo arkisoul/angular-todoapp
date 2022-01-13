@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { Todo } from '../models/todo';
 
 @Component({
@@ -6,7 +6,7 @@ import { Todo } from '../models/todo';
   templateUrl: './todo-header.component.html',
   styleUrls: ['./todo-header.component.css'],
 })
-export class TodoHeaderComponent implements OnInit {
+export class TodoHeaderComponent implements OnInit, OnChanges {
   @Input('appTitle') title!: string;
   @Input() newTodo!: Todo;
 
@@ -15,6 +15,10 @@ export class TodoHeaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+      console.log(changes);
+  }
 
   onKeyupEnter() {
     this.createNewTodo.emit();

@@ -6,7 +6,11 @@
   ></todoapp-todo-header>
   <todoapp-todo-list [todos]="todos"></todoapp-todo-list>
   <todoapp-todo-footer
+    *ngIf="showFooter"
     [todosLeft]="todos.length"
     (createNewTodo)="onCreateNewTodo()"
-  ></todoapp-todo-footer>
+  >
+    <!-- <h1>this is footer</h1> -->
+  </todoapp-todo-footer>
+  <button mat-raised-button color="primary" (click)="showFooter = !showFooter">Toggle Footer</button>
 </section>

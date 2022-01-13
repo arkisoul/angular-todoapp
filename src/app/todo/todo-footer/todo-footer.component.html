@@ -1,4 +1,5 @@
 <footer class="footer">
     <p>{{ todosLeft }} {{ todosLeft <= 1 ? 'item' : 'items' }} left</p>
+    <ng-content></ng-content>
     <button mat-raised-button color="primary" (click)="handleClick()">Create Todo</button>
 </footer>
