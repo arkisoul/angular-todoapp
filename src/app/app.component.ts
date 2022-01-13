@@ -14,6 +14,8 @@ import {
 export class AppComponent implements AfterViewInit {
   @ViewChild('username') userName!: TemplateRef<HTMLInputElement>;
   public title = 'Todoapp';
+  public today = new Date();
+  public price = 999;
 
   ngAfterViewInit(): void {
     console.log(this.userName);

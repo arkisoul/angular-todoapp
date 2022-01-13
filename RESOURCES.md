@@ -16,3 +16,11 @@
 
 ### Content projection
 - Content projecting in Angular using <ng-content></ng-content> tag [here](https://angular.io/guide/content-projection)
+
+### DOM Manipulation, Template ref variables
+- ViewChild [here](https://angular.io/api/core/ViewChild)
+- ViewChildren [here](https://angular.io/api/core/ViewChildren)
+- Template Reference Variables [here](https://angular.io/guide/template-reference-variables)
+
+### Pipes
+- Pipes, built-in pipes [here](https://angular.io/guide/pipes)
