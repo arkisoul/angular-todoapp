@@ -1,10 +1,10 @@
 import {
-  AfterViewChecked,
   AfterViewInit,
   Component,
-  TemplateRef,
+  ElementRef,
   ViewChild,
 } from '@angular/core';
+import { CardComponent } from './shared/card/card.component';
 
 @Component({
   selector: 'todoapp-root',
@@ -12,14 +12,19 @@ import {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements AfterViewInit {
-  @ViewChild('username') userName!: TemplateRef<HTMLInputElement>;
+  @ViewChild('username', { read: ElementRef })
+  userName!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('card') card!: CardComponent;
+
   public title = 'Todoapp';
   public today = new Date();
   public price = 999;
 
   ngAfterViewInit(): void {
-    console.log(this.userName);
-    this.userName.elementRef.nativeElement.focus();
+    console.log(this.userName, this.card);
+    this.userName.nativeElement.focus();
+    this.card.sayHello();
   }
 
   getName(name: string) {

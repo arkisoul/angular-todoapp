@@ -3,7 +3,7 @@
 <p>example of currency pip {{ price | currency:'EUR':'symbol':'4.2' }}</p>
 <input type="text" placeholder="Write your name" name="name" id="username" #username>
 <button (click)="getName(username.id)">Get name</button>
-<todoapp-card>
+<todoapp-card #card>
     <div cardHead>
         <h3>Card Header</h3>
     </div>
