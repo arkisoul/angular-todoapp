@@ -10,6 +10,7 @@ import { TodoHeaderComponent } from './todo-header/todo-header.component';
 import { TodoFooterComponent } from './todo-footer/todo-footer.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
+import { TodoService } from './todo.service';
 
 const materialModules = [MatInputModule, MatFormFieldModule, MatButtonModule];
 
@@ -22,6 +23,6 @@ const materialModules = [MatInputModule, MatFormFieldModule, MatButtonModule];
     TodoItemComponent,
   ],
   imports: [CommonModule, FormsModule, ...materialModules],
-  exports: [TodosComponent],
+  exports: [TodosComponent]
 })
 export class TodoModule {}

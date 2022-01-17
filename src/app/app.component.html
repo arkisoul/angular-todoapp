@@ -1,6 +1,8 @@
 <todoapp-todos></todoapp-todos>
-<p>today is {{today | date:'YYYY-MM-dd'}}</p>
-<p>example of currency pip {{ price | currency:'EUR':'symbol':'4.2' }}</p>
+<button (click)="getTodos()">Get todo summary</button>
+<p>Todos {{ todoCount }}</p>
+<!-- <p todoappBgColor>today is {{today | date:'YYYY-MM-dd'}}</p>
+<p todoappBgColor>example of currency pip {{ price | currency:'EUR':'symbol':'4.2' }}</p>
 <input type="text" placeholder="Write your name" name="name" id="username" #username>
 <button (click)="getName(username.id)">Get name</button>
 <todoapp-card #card>
@@ -12,4 +14,4 @@
         <button>Cancel</button>
         <button>Ok</button>
     </div>
-</todoapp-card>
+</todoapp-card> -->

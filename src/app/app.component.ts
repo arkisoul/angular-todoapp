@@ -1,10 +1,6 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { CardComponent } from './shared/card/card.component';
+import { TodoService } from './todo/todo.service';
 
 @Component({
   selector: 'todoapp-root',
@@ -20,6 +16,9 @@ export class AppComponent implements AfterViewInit {
   public title = 'Todoapp';
   public today = new Date();
   public price = 999;
+  public todoCount: number = 0;
+
+  constructor(private todoService: TodoService) {}
 
   ngAfterViewInit(): void {
     console.log(this.userName, this.card);
@@ -29,5 +28,10 @@ export class AppComponent implements AfterViewInit {
 
   getName(name: string) {
     console.log(name);
+  }
+
+  getTodos() {
+    const todos = this.todoService.getAllTodos();
+    this.todoCount = todos.length;
   }
 }

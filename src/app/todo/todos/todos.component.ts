@@ -1,5 +1,4 @@
 import {
-  AfterContentInit,
   AfterViewInit,
   Component,
   OnDestroy,
@@ -7,20 +6,22 @@ import {
 } from '@angular/core';
 
 import { Todo } from '../models/todo';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'todoapp-todos',
   templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.css'],
+  styleUrls: ['./todos.component.css']
 })
 export class TodosComponent implements OnInit, OnDestroy, AfterViewInit {
   public title: string = 'Todos';
   public newTodo: Todo = new Todo();
-  public todos: Todo[] = [];
+  public todos: Todo[];
   public showFooter: boolean = true;
 
-  constructor() {
+  constructor(private todoService: TodoService) {
     console.log('constructor');
+    this.todos = this.todoService.getAllTodos();
   }
 
   ngOnInit(): void {
@@ -36,7 +37,8 @@ export class TodosComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onCreateNewTodo() {
-    this.todos.push(this.newTodo);
+    this.todoService.addTodo(this.newTodo);
+    this.todos = this.todoService.getAllTodos();
     this.newTodo = new Todo();
   }
 }
