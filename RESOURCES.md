@@ -24,3 +24,13 @@
 
 ### Pipes
 - Pipes, built-in pipes [here](https://angular.io/guide/pipes)
+
+### Services and Dependency Injection (DI)
+- Angular Dependency Injection Explained with Examples [here](https://www.freecodecamp.org/news/angular-dependency-injection/)
+    - It gives you the basic understanding about DI in Angular.
+- All about Dependency Injection in Angular [here](https://medium.com/@sakshidinesh/all-about-dependency-injection-in-angular-99aff3687db3)
+    - This will give you more insight into DI in angular.
+- Improved Dependency Injection with the new providedIn scopes 'any' and 'platform' [here](https://dev.to/christiankohler/improved-dependeny-injection-with-the-new-providedin-scopes-any-and-platform-30bb)
+    - This will give your information about in providedIn scopes introduced in Angular v9
+- An introduction to Angular dependency injection. [here](https://www.freecodecamp.org/news/angular-dependency-injection-in-detail-8b6822d6457c/)
+    - This will show how DI works under the hood in Angular.
