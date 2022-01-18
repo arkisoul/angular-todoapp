@@ -4,15 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
 
 import { TodosComponent } from './todos/todos.component';
 import { TodoHeaderComponent } from './todo-header/todo-header.component';
 import { TodoFooterComponent } from './todo-footer/todo-footer.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
-import { TodoService } from './todo.service';
+import { SharedModule } from '../shared/shared.module';
 
-const materialModules = [MatInputModule, MatFormFieldModule, MatButtonModule];
+const materialModules = [
+  MatInputModule,
+  MatFormFieldModule,
+  MatButtonModule,
+  MatListModule,
+];
 
 @NgModule({
   declarations: [
@@ -22,7 +28,7 @@ const materialModules = [MatInputModule, MatFormFieldModule, MatButtonModule];
     TodoListComponent,
     TodoItemComponent,
   ],
-  imports: [CommonModule, FormsModule, ...materialModules],
+  imports: [CommonModule, FormsModule, SharedModule, ...materialModules],
   exports: [TodosComponent]
 })
 export class TodoModule {}
