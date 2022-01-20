@@ -9,10 +9,10 @@ export class BgColorDirective implements AfterViewInit {
   constructor(private el: ElementRef) {}
 
   ngAfterViewInit(): void {
-    console.log(this.bgColor);
     this.el.nativeElement.style.backgroundColor = this.bgColor;
-    this.el.nativeElement.style.padding = '12px 15px';
+    this.el.nativeElement.style.padding = '16px 32px';
     this.el.nativeElement.style.boxSizing = 'border-box';
     this.el.nativeElement.style.color = '#fff';
+    this.el.nativeElement.style.fontSize = "32px";
   }
 }

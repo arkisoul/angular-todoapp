@@ -8,6 +8,7 @@ import { Todo } from '../models/todo';
 })
 export class TodoItemComponent implements OnInit {
   @Input() todo!: Todo;
+  public isDisabled: boolean = true;
 
   constructor() {}
 

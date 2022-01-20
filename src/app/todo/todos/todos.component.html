@@ -2,8 +2,8 @@
   <todoapp-todo-header
     [appTitle]="title"
     [newTodo]="newTodo"
+    [todoError]="todoError"
     (createTodo)="onCreateNewTodo()"
-    *todoappUnless="false"
   ></todoapp-todo-header>
   <todoapp-todo-list [todos]="todos"></todoapp-todo-list>
   <todoapp-todo-footer

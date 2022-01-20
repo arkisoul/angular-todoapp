@@ -1,9 +1,10 @@
 <header class="header">
-  <h1 todoappBgColor [bgColor]="'grey'">{{ title }}</h1>
+  <h1>{{ title }}</h1>
   <div class="field-wrapper">
     <mat-form-field class="full-width">
       <mat-label>Create new todo</mat-label>
       <input matInput placeholder="What do you want to do?" name="todo-title" [(ngModel)]="newTodo.title" (keyup.enter)="onKeyupEnter()" required>
+      <mat-error *ngIf="todoError">Todo title is required</mat-error>
     </mat-form-field>
   </div>
 </header>

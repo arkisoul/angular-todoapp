@@ -6,7 +6,7 @@ import { Todo } from "./models/todo";
     providedIn: 'root'
 })
 export class TodoService {
-    private todos: Todo[] = [];
+    private todos: Todo[] = [new Todo({_id: 1, title: 'Create todo app', isCompleted: false, })];
 
     addTodo(todo: Todo) {
         this.todos.push(todo);
@@ -14,14 +14,14 @@ export class TodoService {
 
     editTodo(updateTodo: Todo) {
         this.todos.forEach(todo => {
-            if(todo.id === updateTodo.id) {
+            if(todo._id === updateTodo._id) {
                 todo = updateTodo;
             }
         })
     }
 
     deleteTodo(todoId: number) {
-        this.todos = this.todos.filter(todo => todo.id !== todoId);
+        this.todos = this.todos.filter(todo => todo._id !== todoId);
     }
 
     getAllTodos(): Todo[] {
@@ -29,7 +29,7 @@ export class TodoService {
     }
 
     getTodoById(todoId: number): Todo | Boolean {
-        const todo = this.todos.filter(todo => todo.id === todoId)
+        const todo = this.todos.filter(todo => todo._id === todoId)
         return todo.length ? todo[0] : false;
     }
 }

@@ -68,3 +68,8 @@ body, .mat-body, .body-1, .mat-typography {
 .mb-0 {
 	margin-bottom: 0!important;
 }
+
+.flex {
+	display: flex;
+	align-items: center;
+}
