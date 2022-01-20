@@ -6,6 +6,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 import { TodosComponent } from './todos/todos.component';
 import { TodoHeaderComponent } from './todo-header/todo-header.component';
@@ -19,7 +22,9 @@ const materialModules = [
   MatFormFieldModule,
   MatButtonModule,
   MatListModule,
-  MatIconModule
+  MatIconModule,
+  MatDialogModule,
+  MatCheckboxModule,
 ];
 
 @NgModule({

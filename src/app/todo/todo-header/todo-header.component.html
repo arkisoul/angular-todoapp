@@ -1,7 +1,7 @@
 <header class="header">
   <h1>{{ title }}</h1>
   <div class="field-wrapper">
-    <mat-form-field class="full-width">
+    <mat-form-field class="full-width flex-1">
       <mat-label>Create new todo</mat-label>
       <input matInput placeholder="What do you want to do?" name="todo-title" [(ngModel)]="newTodo.title" (keyup.enter)="onKeyupEnter()" required>
       <mat-error *ngIf="todoError">Todo title is required</mat-error>

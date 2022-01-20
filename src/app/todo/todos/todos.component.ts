@@ -20,7 +20,7 @@ export class TodosComponent {
   }
 
   onCreateNewTodo() {
-    if(this.newTodo.title.trim().length === 0) {
+    if (this.newTodo.title.trim().length === 0) {
       this.todoError = true;
       return;
     }
@@ -28,5 +28,10 @@ export class TodosComponent {
     this.todoService.addTodo(this.newTodo);
     this.todos = this.todoService.getAllTodos();
     this.newTodo = new Todo();
+  }
+
+  onDeleteTodo(id: number) {
+    this.todoService.deleteTodo(id);
+    this.todos = this.todoService.getAllTodos();
   }
 }

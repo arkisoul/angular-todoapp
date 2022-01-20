@@ -1,9 +1,9 @@
 <section class="todos">
-  <mat-selection-list *ngIf="todos.length > 0; else noTodoBlock">
-    <mat-list-option *ngFor="let todo of todos" [selected]="todo.isCompleted" [value]="todo" [checkboxPosition]="'before'">
-      <todoapp-todo-item [todo]="todo"></todoapp-todo-item>
-    </mat-list-option>
-  </mat-selection-list>
+  <mat-list role="list" *ngIf="todos.length > 0; else noTodoBlock" disableRipple>
+    <mat-list-item role="listitem" *ngFor="let todo of todos">
+      <todoapp-todo-item [todo]="todo" (deleteTodo)="handleDeleteTodo($event)"></todoapp-todo-item>
+    </mat-list-item>
+  </mat-list>
   <ng-template #noTodoBlock>
     <p class="mb-0">No todo. Create new one using the form below</p>
   </ng-template>

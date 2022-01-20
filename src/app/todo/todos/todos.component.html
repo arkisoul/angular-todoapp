@@ -5,7 +5,10 @@
     [todoError]="todoError"
     (createTodo)="onCreateNewTodo()"
   ></todoapp-todo-header>
-  <todoapp-todo-list [todos]="todos"></todoapp-todo-list>
+  <todoapp-todo-list
+    [todos]="todos"
+    (deleteTodo)="onDeleteTodo($event)"
+  ></todoapp-todo-list>
   <todoapp-todo-footer
     *ngIf="showFooter"
     [todosLeft]="todos.length"
