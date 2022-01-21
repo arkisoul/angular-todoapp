@@ -16,7 +16,10 @@ export class TodosComponent {
   public showFooter: boolean = true;
 
   constructor(private todoService: TodoService) {
-    this.todos = this.todoService.getAllTodos();
+    this.todoService.getAllTodos().subscribe((response) => {
+      if(response.data)
+        this.todos = response.data;
+    });
   }
 
   onCreateNewTodo() {
@@ -25,13 +28,13 @@ export class TodosComponent {
       return;
     }
     this.todoError = false;
-    this.todoService.addTodo(this.newTodo);
-    this.todos = this.todoService.getAllTodos();
+    this.todoService.addTodo(this.newTodo).subscribe((response) => console.log(response));
+    // this.todos = this.todoService.getAllTodos();
     this.newTodo = new Todo();
   }
 
   onDeleteTodo(id: number) {
     this.todoService.deleteTodo(id);
-    this.todos = this.todoService.getAllTodos();
+    // this.todos = this.todoService.getAllTodos();
   }
 }

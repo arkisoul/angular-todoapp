@@ -9,7 +9,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
-
 import { TodosComponent } from './todos/todos.component';
 import { TodoHeaderComponent } from './todo-header/todo-header.component';
 import { TodoFooterComponent } from './todo-footer/todo-footer.component';
@@ -35,7 +34,12 @@ const materialModules = [
     TodoListComponent,
     TodoItemComponent,
   ],
-  imports: [CommonModule, FormsModule, SharedModule, ...materialModules],
-  exports: [TodosComponent]
+  imports: [
+    CommonModule,
+    FormsModule,
+    SharedModule,
+    ...materialModules
+  ],
+  exports: [TodosComponent],
 })
 export class TodoModule {}

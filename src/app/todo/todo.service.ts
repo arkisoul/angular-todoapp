@@ -1,50 +1,60 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-import { Todo } from "./models/todo";
+import { Todo } from './models/todo';
+import { ServerResponse } from './classes/server-response.class';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class TodoService {
-    private todos: Todo[] = [new Todo({_id: 1, title: 'Create todo app', isCompleted: false, })];
-    private completed: number = 0;
-    private incomplete: number = 0;
+  private todos: Todo[] = [];
+  private completed: number = 0;
+  private incomplete: number = 0;
 
-    addTodo(todo: Todo) {
-        this.todos.push(todo);
-        this.updateSummary();
-    }
+  constructor(private http: HttpClient) {}
 
-    editTodo(updateTodo: Todo) {
-        this.todos.forEach(todo => {
-            if(todo._id === updateTodo._id) {
-                todo = updateTodo;
-            }
-        })
-        this.updateSummary();
-    }
+  addTodo(todo: Todo): Observable<ServerResponse<Todo>> {
+    // this.todos.push(todo);
+    return this.http.post<ServerResponse<Todo>>("http://localhost:3000/todos", todo);
+    // this.updateSummary();
+  }
 
-    deleteTodo(todoId: number) {
-        this.todos = this.todos.filter(todo => todo._id !== todoId);
-        this.updateSummary()
-    }
+  editTodo(updateTodo: Todo) {
+    this.todos.forEach((todo) => {
+      if (todo._id === updateTodo._id) {
+        todo = updateTodo;
+      }
+    });
+    this.updateSummary();
+  }
 
-    getAllTodos(): Todo[] {
-        return this.todos;
-    }
+  deleteTodo(todoId: number) {
+    this.todos = this.todos.filter((todo) => todo._id !== todoId);
+    this.updateSummary();
+  }
 
-    getTodoById(todoId: number): Todo | Boolean {
-        const todo = this.todos.filter(todo => todo._id === todoId)
-        return todo.length ? todo[0] : false;
-    }
+  getAllTodos(): Observable<ServerResponse<Todo[]>> {
+    return this.http.get<ServerResponse<Todo[]>>('http://localhost:3000/todos');
+  }
 
-    updateSummary() {
-        const completed = this.todos.filter((todo: Todo) => todo.isCompleted);
-        this.completed = completed.length;
-        this.incomplete = this.todos.length - this.completed;
-    }
+  getTodoById(todoId: number): Todo | Boolean {
+    const todo = this.todos.filter((todo) => todo._id === todoId);
+    return todo.length ? todo[0] : false;
+  }
 
-    getSummary() {
-        return { completed: this.completed, incomplete: this.incomplete, total: this.completed + this.incomplete }
-    }
+  updateSummary() {
+    const completed = this.todos.filter((todo: Todo) => todo.isCompleted);
+    this.completed = completed.length;
+    this.incomplete = this.todos.length - this.completed;
+  }
+
+  getSummary() {
+    return {
+      completed: this.completed,
+      incomplete: this.incomplete,
+      total: this.completed + this.incomplete,
+    };
+  }
 }
