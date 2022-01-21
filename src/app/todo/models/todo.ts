@@ -1,5 +1,5 @@
 type TODO = {
-  _id: number;
+  _id: string;
   title: string;
   isCompleted: boolean;
   createdAt?: string;
@@ -7,23 +7,17 @@ type TODO = {
 };
 
 export class Todo {
-  _id: number;
+  _id: string;
   title: string;
   isCompleted: boolean;
   createdAt!: string;
   updatedAt!: string;
 
-  constructor(
-    todo: TODO = {
-      _id: 0,
-      title: '',
-      isCompleted: false,
-    }
-  ) {
-    this._id = todo._id;
-    this.title = todo.title;
-    this.isCompleted = todo.isCompleted;
-    this.createdAt = todo.createdAt ? todo.createdAt : new Date().toLocaleString();
-    this.updatedAt = todo.updatedAt ? todo.updatedAt : new Date().toLocaleString();
+  constructor(todo?: TODO) {
+    this._id = todo && todo._id ? todo._id : '';
+    this.title = todo && todo.title ? todo.title : '';
+    this.isCompleted = todo && todo.isCompleted ? todo.isCompleted : false;
+    this.createdAt = todo && todo.createdAt ? todo.createdAt : new Date().toLocaleString();
+    this.updatedAt = todo && todo.updatedAt ? todo.updatedAt : new Date().toLocaleString();
   }
 }

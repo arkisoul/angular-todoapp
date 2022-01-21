@@ -33,8 +33,8 @@ export class TodosComponent {
     this.newTodo = new Todo();
   }
 
-  onDeleteTodo(id: number) {
-    this.todoService.deleteTodo(id);
+  onDeleteTodo(id: string) {
+    this.todoService.deleteTodo(id).subscribe();
     // this.todos = this.todoService.getAllTodos();
   }
 }

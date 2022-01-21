@@ -9,11 +9,11 @@ import { Todo } from '../models/todo';
 export class TodoListComponent {
   @Input() todos!: Todo[];
 
-  @Output() deleteTodo: EventEmitter<number> = new EventEmitter();
+  @Output() deleteTodo: EventEmitter<string> = new EventEmitter();
 
   constructor() {}
 
-  handleDeleteTodo(event: number) {
+  handleDeleteTodo(event: string) {
     this.deleteTodo.emit(event);
   }
 }

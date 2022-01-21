@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Todo } from './models/todo';
 import { ServerResponse } from './classes/server-response.class';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,36 +13,33 @@ export class TodoService {
   private todos: Todo[] = [];
   private completed: number = 0;
   private incomplete: number = 0;
+  private readonly API_URL: string = `${environment.apiUrl}/todos`;
 
   constructor(private http: HttpClient) {}
 
   addTodo(todo: Todo): Observable<ServerResponse<Todo>> {
     // this.todos.push(todo);
-    return this.http.post<ServerResponse<Todo>>("http://localhost:3000/todos", todo);
     // this.updateSummary();
+    return this.http.post<ServerResponse<Todo>>(`${this.API_URL}`, todo);
   }
 
   editTodo(updateTodo: Todo) {
-    this.todos.forEach((todo) => {
-      if (todo._id === updateTodo._id) {
-        todo = updateTodo;
-      }
-    });
-    this.updateSummary();
+    return this.http.put<ServerResponse<Todo>>(
+      `${this.API_URL}/${updateTodo._id}`,
+      updateTodo
+    );
   }
 
-  deleteTodo(todoId: number) {
-    this.todos = this.todos.filter((todo) => todo._id !== todoId);
-    this.updateSummary();
+  deleteTodo(todoId: string) {
+    return this.http.delete<ServerResponse<null>>(`${this.API_URL}/${todoId}`);
   }
 
   getAllTodos(): Observable<ServerResponse<Todo[]>> {
-    return this.http.get<ServerResponse<Todo[]>>('http://localhost:3000/todos');
+    return this.http.get<ServerResponse<Todo[]>>(`${this.API_URL}`);
   }
 
-  getTodoById(todoId: number): Todo | Boolean {
-    const todo = this.todos.filter((todo) => todo._id === todoId);
-    return todo.length ? todo[0] : false;
+  getTodoById(todoId: string): Observable<ServerResponse<Todo>> {
+    return this.http.get<ServerResponse<Todo>>(`${this.API_URL}/${todoId}`);
   }
 
   updateSummary() {

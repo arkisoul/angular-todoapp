@@ -18,7 +18,7 @@ import { Todo } from '../models/todo';
 export class TodoItemComponent {
   @Input() todo!: Todo;
 
-  @Output() deleteTodo: EventEmitter<number> = new EventEmitter();
+  @Output() deleteTodo: EventEmitter<string> = new EventEmitter();
 
   @ViewChild('deletePrompt') private deletePrompt!: TemplateRef<MatDialog>;
 
