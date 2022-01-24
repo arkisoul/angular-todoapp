@@ -1,27 +1,5 @@
-<todoapp-todos></todoapp-todos>
-<!-- <p todoappBgColor [bgColor]="'green'">File size pipe {{ 9929393 | filesize:'GB' }}</p>
-<p todoappBgColor [bgColor]="'green'">File size pipe {{ 12930 | filesize }}</p>
-<p todoappBgColor [bgColor]="'green'">File size pipe {{ 549023 | filesize:'MB' }}</p>
-<p todoappBgColor [bgColor]="'green'">File size pipe {{ 321305 | filesize }}</p>
-<p todoappBgColor [bgColor]="'green'">File size pipe {{ 86720 | filesize:'KB' }}</p> -->
-
-<!-- <form action="" (submit)="onSubmit()">
-  <input type="text" name="username" [(ngModel)]="user.username" />
-  <input type="password" name="password" [(ngModel)]="user.password" />
-  <button role="submit" type="submit">Submit</button>
-</form>
-
-<form action="" (submit)="onReactiveSubmit()" [formGroup]="userForm" novalidate>
-  <div>
-    <input type="text" name="username" formControlName="un"/>
-    <!-- <small *ngIf="username.dirty && username.invalid">Username is required</small> --
-  </div>
-  <div>
-      <input type="password" name="password" formControlName="pass" />
-      <!-- <small *ngIf="password.dirty && password.invalid">Password is required</small> --
-  </div>
-  <button role="submit" type="submit" [disabled]="!userForm.valid">Submit</button>
-</form>
-
-<p>Username: {{ username.value }}</p>
-<p>Password: {{ password.value }}</p> -->
+<p>AppComponent works!</p>
+<a [routerLink]="['/todos']">Todos</a>
+<a [routerLink]="['/auth/signup']">Register</a>
+<a [routerLink]="['/auth/signin']">Login</a>
+<router-outlet></router-outlet>

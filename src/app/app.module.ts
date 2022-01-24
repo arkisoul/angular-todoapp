@@ -12,6 +12,7 @@ import { TodoModule } from './todo/todo.module';
 import { SharedModule } from './shared/shared.module';
 import { BaseInterceptor } from './interceptors/base.interceptor';
 import { ErrorHandlerInterceptor } from './interceptors/error-handler.interceptor';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,10 +27,15 @@ import { ErrorHandlerInterceptor } from './interceptors/error-handler.intercepto
     TodoModule,
     SharedModule,
     HttpClientModule,
+    AuthModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

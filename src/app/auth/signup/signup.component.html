@@ -1,0 +1,43 @@
+<div class="auth-signup">
+  <h1 class="mat-headline text-center">Welcome to Todoapp</h1>
+  <div class="auth-prompt text-center">
+    Already have an account?
+    <a mat-button [routerLink]="[signInRoute]" class="mat-button--link">Login</a>
+  </div>
+  <div class="auth-signup-form">
+    <form novalidate [formGroup]="signupForm" (ngSubmit)="signUpUser()" autocomplete="off">
+      <div class="mat-field-box">
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+          <mat-label>Full name</mat-label>
+          <input matInput placeholder="eg. John Doe" formControlName="fullname" required>
+          <mat-icon matSuffix>person</mat-icon>
+          <mat-error *ngIf="signupForm.get('fullname')?.invalid">Name is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="mat-field-box">
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="eg. john.doe@example.com" formControlName="email" required>
+          <mat-icon matSuffix>mail</mat-icon>
+          <mat-error *ngIf="signupForm.get('email')?.invalid">Email is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="mat-field-box">
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" placeholder="A strong one" formControlName="password"
+            required>
+          <button mat-icon-button matSuffix (click)="togglePasswordFieldType($event)"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" role="button" type="button">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="signupForm.get('password')?.invalid">Password is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="mat-field-box text-right">
+        <button mat-raised-button color="primary" type="submit"
+          [disabled]="signupForm.invalid">Register</button>
+      </div>
+    </form>
+  </div>
+</div>
