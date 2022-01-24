@@ -1,5 +1,5 @@
 <div class="flex">
-  <mat-checkbox class="example-margin" [checked]="todo.isCompleted">
+  <mat-checkbox class="example-margin" [checked]="todo.isCompleted" (change)="todoStatusChanged($event)">
   </mat-checkbox>
   <mat-form-field class="full-width" *todoappUnless="isDisabled">
     <input
@@ -9,8 +9,11 @@
     />
   </mat-form-field>
   <div *ngIf="isDisabled" class="full-width">{{todo.title}}</div>
-  <button mat-icon-button aria-label="Edit's a todo">
+  <button mat-icon-button aria-label="Edit's a todo" *ngIf="isDisabled" (click)="edit()">
     <mat-icon>edit</mat-icon>
+  </button>
+  <button mat-icon-button aria-label="Save a todo" *todoappUnless="isDisabled" (click)="update()">
+    <mat-icon>save</mat-icon>
   </button>
   <button
     mat-icon-button

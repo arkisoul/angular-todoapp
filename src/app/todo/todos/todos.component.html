@@ -6,14 +6,15 @@
     (createTodo)="onCreateNewTodo()"
   ></todoapp-todo-header>
   <todoapp-todo-list
-    [todos]="todos"
+    [todos]="todos$ | async"
     (deleteTodo)="onDeleteTodo($event)"
+    (updateTodo)="onUpdateTodo($event)"
+    (updateTodoStatus)="onTodoStatusChange($event)"
   ></todoapp-todo-list>
   <todoapp-todo-footer
-    *ngIf="showFooter"
-    [todosLeft]="todos.length"
+    [todosLeft]="inCompleted$ | async"
+    [todosComplete]="completed$ | async"
     (createNewTodo)="onCreateNewTodo()"
   >
   </todoapp-todo-footer>
-  <!-- <button mat-raised-button color="primary" (click)="showFooter = !showFooter">Toggle Footer</button> -->
 </section>

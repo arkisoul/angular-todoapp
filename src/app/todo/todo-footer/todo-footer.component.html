@@ -1,5 +1,16 @@
 <footer class="footer">
-    <p>{{ todosLeft }} {{ todosLeft <= 1 ? 'item' : 'items' }} left</p>
-    <ng-content></ng-content>
-    <button mat-raised-button color="primary" (click)="handleClick()">Create Todo</button>
+  <mat-chip-list aria-label="Todos summary">
+    <mat-chip color="primary" *ngIf="todosComplete" selected
+      >{{ todosComplete }}
+      {{ todosComplete <= 1 ? "item" : "items" }} completed</mat-chip
+    >
+    <mat-chip color="accent" *ngIf="todosLeft" selected
+      >{{ todosLeft }} {{ todosLeft <= 1 ? "item" : "items" }} left</mat-chip
+    >
+  </mat-chip-list>
+  <div style="margin-top: 1em;">
+    <button mat-raised-button color="primary" (click)="handleClick()">
+      Create Todo
+    </button>
+  </div>
 </footer>

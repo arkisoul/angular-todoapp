@@ -1,7 +1,15 @@
-<section class="todos">
-  <mat-list role="list" *ngIf="todos.length > 0; else noTodoBlock" disableRipple>
-    <mat-list-item role="listitem" *ngFor="let todo of todos">
-      <todoapp-todo-item [todo]="todo" (deleteTodo)="handleDeleteTodo($event)"></todoapp-todo-item>
+<section class="todos" *ngIf="todos">
+  <mat-list
+    role="list"
+    *ngIf="todos.length > 0; else noTodoBlock"
+  >
+    <mat-list-item role="listitem" *ngFor="let todo of todos" [ngClass]="{'todo--completed': todo.isCompleted}">
+      <todoapp-todo-item
+        [todo]="todo"
+        (deleteTodo)="handleDeleteTodo($event)"
+        (updateTodo)="handleUpdateTodo($event)"
+        (updateTodoStatus)="handleTodoStatusChanged($event)"
+      ></todoapp-todo-item>
     </mat-list-item>
   </mat-list>
   <ng-template #noTodoBlock>

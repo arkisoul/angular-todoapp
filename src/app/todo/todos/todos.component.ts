@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { Todo } from '../models/todo';
 import { TodoService } from '../todo.service';
@@ -12,14 +13,16 @@ export class TodosComponent {
   public title: string = 'Todos';
   public newTodo: Todo = new Todo();
   public todoError: boolean = false;
-  public todos: Todo[] = [];
+  public todos$: Observable<Todo[]>;
+  public completed$: Observable<number>;
+  public inCompleted$: Observable<number>;
   public showFooter: boolean = true;
 
   constructor(private todoService: TodoService) {
-    this.todoService.getAllTodos().subscribe((response) => {
-      if(response.data)
-        this.todos = response.data;
-    });
+    this.todoService.getAllTodos();
+    this.todos$ = this.todoService.getTodos();
+    this.completed$ = this.todoService.getCompleted();
+    this.inCompleted$ = this.todoService.getIncompleted();
   }
 
   onCreateNewTodo() {
@@ -28,13 +31,19 @@ export class TodosComponent {
       return;
     }
     this.todoError = false;
-    this.todoService.addTodo(this.newTodo).subscribe((response) => console.log(response));
-    // this.todos = this.todoService.getAllTodos();
+    this.todoService.addTodo(this.newTodo);
     this.newTodo = new Todo();
   }
 
   onDeleteTodo(id: string) {
-    this.todoService.deleteTodo(id).subscribe();
-    // this.todos = this.todoService.getAllTodos();
+    this.todoService.deleteTodo(id);
+  }
+
+  onUpdateTodo(todo: Todo) {
+    this.todoService.editTodo(todo);
+  }
+
+  onTodoStatusChange(event: { status: boolean; todoId: string }) {
+    this.todoService.updateTodoStatus(event.status, event.todoId);
   }
 }
