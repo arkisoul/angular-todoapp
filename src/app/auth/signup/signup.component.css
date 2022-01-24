@@ -1,0 +1,14 @@
+.auth-signup {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    text-align: center;
+    background-color: white;
+    padding: 1em 2em;
+}
+.signup {
+    width: 100%;
+}

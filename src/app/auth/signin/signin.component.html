@@ -1,32 +1,34 @@
 <div class="auth-signin">
-  <h1 class="mat-headline text-center">Welcome back</h1>
-  <div class="auth-prompt text-right">
-    Don't have an account?
-    <a mat-button [routerLink]="[signUpRoute]" class="mat-button--link">Register</a>
-  </div>
-  <div class="auth-signin-form">
-    <form novalidate [formGroup]="signinForm" (ngSubmit)="signInUser()" autocomplete="off">
-      <div class="mat-field-box">
-        <mat-form-field appearance="outline" [hideRequiredMarker]="true">
-          <mat-label>Email</mat-label>
-          <input matInput type="email" placeholder="eg. john.doe@example.com" formControlName="email" required>
-          <mat-icon matSuffix>mail</mat-icon>
-          <mat-error *ngIf="signinForm.get('email')?.invalid">Email is required</mat-error>
-        </mat-form-field>
-      </div>
-      <div class="mat-field-box">
-        <mat-form-field appearance="outline" [hideRequiredMarker]="true">
-          <mat-label>Password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" placeholder="A strong password" formControlName="password" required>
-          <button tabindex="0" mat-icon-button matSuffix (click)="togglePasswordFieldType($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" role="button" type="button">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-          <mat-error *ngIf="signinForm.get('password')?.invalid">Password is required</mat-error>
-        </mat-form-field>
-      </div>
-      <div class="mat-field-box text-right">
-        <button mat-raised-button color="primary" type="submit" [disabled]="signinForm.invalid">Login</button>
-      </div>
-    </form>
-  </div>
+  <section class="signin">
+    <h1 class="mat-headline text-center">Welcome back</h1>
+    <div class="auth-prompt text-right">
+      Don't have an account?
+      <a mat-button [routerLink]="[signUpRoute]" class="mat-button--link">Register</a>
+    </div>
+    <div class="auth-signin-form">
+      <form novalidate [formGroup]="signinForm" (ngSubmit)="signInUser()" autocomplete="off">
+        <div class="mat-field-box">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" placeholder="eg. john.doe@example.com" formControlName="email" required>
+            <mat-icon matSuffix>mail</mat-icon>
+            <mat-error *ngIf="signinForm.get('email')?.invalid">Email is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mat-field-box">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="A strong password" formControlName="password" required>
+            <button tabindex="0" mat-icon-button matSuffix (click)="togglePasswordFieldType($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" role="button" type="button">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="signinForm.get('password')?.invalid">Password is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mat-field-box text-right">
+          <button mat-raised-button color="primary" type="submit" [disabled]="signinForm.invalid">Login</button>
+        </div>
+      </form>
+    </div>
+  </section>
 </div>
