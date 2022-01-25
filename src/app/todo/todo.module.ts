@@ -16,6 +16,8 @@ import { TodoFooterComponent } from './todo-footer/todo-footer.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { SharedModule } from '../shared/shared.module';
+import { TodoRoutingModule } from './todo-routing.module';
+import { TodoDetailsComponent } from './todo-details/todo-details.component';
 
 const materialModules = [
   MatInputModule,
@@ -35,12 +37,14 @@ const materialModules = [
     TodoFooterComponent,
     TodoListComponent,
     TodoItemComponent,
+    TodoDetailsComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     SharedModule,
-    ...materialModules
+    ...materialModules,
+    TodoRoutingModule,
   ],
   exports: [TodosComponent],
 })

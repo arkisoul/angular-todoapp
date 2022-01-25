@@ -10,8 +10,8 @@ import {
   Validators,
   FormGroupDirective,
 } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { User } from '../models/user.model';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -29,7 +29,8 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar
   ) {
     this.createSignupForm();
   }
@@ -40,16 +41,23 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   private createSignupForm(): void {
     this.signupForm = this.formBuilder.group({
-      fullname: ['', Validators.required],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]]
     });
   }
 
   signUpUser(): void {
     if (this.signupForm.invalid) return;
-    const formValues: User = { ...this.signupForm.value };
-    this.authService.signUp(formValues).subscribe();
+    
+    this.authService.signUp(this.signupForm.value).subscribe((response) => {
+      if(response.success) {
+        this.snackBar.open(response.message);
+        setTimeout(() => {
+          this.snackBar.dismiss();
+        }, 3000)
+      }
+    });
     this.formGroupDirective.resetForm();
   }
 

@@ -14,11 +14,8 @@ export class BaseInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer jwttoken`
-    })
     const authRequest = request.clone({
-      headers: headers
+      withCredentials: true
     })
 
     return next.handle(authRequest);

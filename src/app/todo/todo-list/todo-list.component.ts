@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+// import { Router } from '@angular/router';
 import { Todo } from '../models/todo';
 
 @Component({
@@ -16,7 +17,7 @@ export class TodoListComponent {
     todoId: string;
   }> = new EventEmitter();
 
-  constructor() {}
+  constructor(/* private router: Router */) {}
 
   handleDeleteTodo(event: string) {
     this.deleteTodo.emit(event);
@@ -29,4 +30,9 @@ export class TodoListComponent {
   handleTodoStatusChanged(event: { status: boolean; todoId: string }) {
     this.updateTodoStatus.emit(event);
   }
+
+  // navigateToDetails(todoId: string) {
+  //   // this.router.navigate(['/todos', todoId]);
+  //   this.router.navigateByUrl(`/todos/${todoId}`);
+  // }
 }

@@ -17,10 +17,14 @@ export class AuthService {
   ) { }
 
   signUp(user: User): Observable<ServerResponse<User>> {
-    return this.http.post<ServerResponse<User>>(`${this.API_URL}/signup`, user);
+    return this.http.post<ServerResponse<User>>(`${this.API_URL}/register`, user);
   }
 
   login(data: Login): Observable<ServerResponse<void>> {
-    return this.http.post<ServerResponse<void>>(`${this.API_URL}/signin`, data);
+    return this.http.post<ServerResponse<void>>(`${this.API_URL}/login`, data);
+  }
+
+  logout() {
+    return this.http.delete<ServerResponse<void>>(`${this.API_URL}/logout`);
   }
 }

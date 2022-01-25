@@ -10,9 +10,9 @@
         <div class="mat-field-box">
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Full name</mat-label>
-            <input matInput placeholder="eg. John Doe" formControlName="fullname" required>
+            <input matInput placeholder="eg. John Doe" formControlName="name" required>
             <mat-icon matSuffix>person</mat-icon>
-            <mat-error *ngIf="signupForm.get('fullname')?.invalid">Name is required</mat-error>
+            <mat-error *ngIf="signupForm.get('name')?.invalid">Name is required</mat-error>
           </mat-form-field>
         </div>
         <div class="mat-field-box">

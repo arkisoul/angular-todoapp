@@ -8,11 +8,9 @@ import { MatSliderModule } from '@angular/material/slider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodoModule } from './todo/todo.module';
 import { SharedModule } from './shared/shared.module';
 import { BaseInterceptor } from './interceptors/base.interceptor';
 import { ErrorHandlerInterceptor } from './interceptors/error-handler.interceptor';
-import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,10 +22,8 @@ import { AuthModule } from './auth/auth.module';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    TodoModule,
     SharedModule,
     HttpClientModule,
-    AuthModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true },

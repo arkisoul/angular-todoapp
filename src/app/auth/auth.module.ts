@@ -5,32 +5,34 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { SharedModule } from '../shared/shared.module';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthRoutingModule } from './auth-routing.module';
-import { RouterModule } from '@angular/router';
+import { LogoutComponent } from './logout/logout.component';
 
 const MaterialModules = [
   MatInputModule,
   MatFormFieldModule,
   MatIconModule,
   MatButtonModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({
   declarations: [
     SignupComponent,
     SigninComponent,
+    LogoutComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // AuthRoutingModule,
+    AuthRoutingModule,
     SharedModule,
-    RouterModule,
     ...MaterialModules,
   ],
   exports: [SignupComponent, SigninComponent]
