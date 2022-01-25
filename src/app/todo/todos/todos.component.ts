@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ComponentCanDeactivate } from 'src/app/guards/pending-changes.guard';
 
 import { Todo } from '../models/todo';
 import { TodoService } from '../todo.service';
@@ -9,7 +10,7 @@ import { TodoService } from '../todo.service';
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
 })
-export class TodosComponent {
+export class TodosComponent implements ComponentCanDeactivate {
   public title: string = 'Todos';
   public newTodo: Todo = new Todo();
   public todoError: boolean = false;
@@ -24,6 +25,10 @@ export class TodosComponent {
     this.completed$ = this.todoService.getCompleted();
     this.inCompleted$ = this.todoService.getIncompleted();
   }
+
+  canDeactivate(): boolean | Observable<boolean> {
+    return false;
+  };
 
   onCreateNewTodo() {
     if (this.newTodo.title.trim().length === 0) {
