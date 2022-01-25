@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,9 +16,6 @@ import { ErrorHandlerInterceptor } from './interceptors/error-handler.intercepto
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule,
-    FormsModule,
-    ReactiveFormsModule,
     CommonModule,
     SharedModule,
     HttpClientModule,
