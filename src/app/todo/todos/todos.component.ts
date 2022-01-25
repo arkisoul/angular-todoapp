@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { from, Observable, of } from 'rxjs';
 import { ComponentCanDeactivate } from 'src/app/guards/pending-changes.guard';
 
 import { Todo } from '../models/todo';
@@ -19,11 +20,13 @@ export class TodosComponent implements ComponentCanDeactivate {
   public inCompleted$: Observable<number>;
   public showFooter: boolean = true;
 
-  constructor(private todoService: TodoService) {
-    this.todoService.getAllTodos();
+  constructor(private todoService: TodoService, private route: ActivatedRoute) {
+    // this.todoService.getAllTodos();
     this.todos$ = this.todoService.getTodos();
     this.completed$ = this.todoService.getCompleted();
     this.inCompleted$ = this.todoService.getIncompleted();
+    this.route.data.subscribe((data) => { console.log(data?.todos?.data); this.todos$ = of<Todo[]>(data?.todos?.data); })
+    const routeData = this.route.snapshot.data
   }
 
   canDeactivate(): boolean | Observable<boolean> {

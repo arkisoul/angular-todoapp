@@ -80,12 +80,7 @@ export class TodoService {
   }
 
   getAllTodos() {
-    this.http.get<ServerResponse<Todo[]>>(`${this.API_URL}`).subscribe((response) => {
-      if(response.data) {
-        this.todos$.next(response.data);
-        this.updateSummary();
-      }
-    });
+    return this.http.get<ServerResponse<Todo[]>>(`${this.API_URL}`);
   }
 
   getTodoById(todoId: string): Observable<ServerResponse<Todo>> {
