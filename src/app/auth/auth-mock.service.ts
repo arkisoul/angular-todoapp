@@ -23,7 +23,7 @@ export class AuthMockService {
       success: true,
       message: 'Registration successful',
       error: null,
-      data: new User('John Doe', 'johndoe@mailinator.com', '12345678'),
+      data: new User('Jane Doe', data.email, data.password),
       resource: 'auth/login',
     });
   }
