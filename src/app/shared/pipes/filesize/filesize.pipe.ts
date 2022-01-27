@@ -12,11 +12,11 @@ export class FilesizePipe implements PipeTransform {
         break;
 
       case 'MB':
-        return Math.fround(value / (1024 * 1024)).toFixed(4) + 'MB';
+        return Math.fround(value / (1000 * 1000)).toFixed(4) + 'MB';
         break;
       
       case 'GB':
-        return Math.fround(value / (1024 * 1024 * 1024)).toFixed(4) + 'GB';
+        return Math.fround(value / (1000 * 1000 * 1000)).toFixed(4) + 'GB';
         break;
 
       default:
