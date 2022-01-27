@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatListModule } from '@angular/material/list';
 
 import { TodoListComponent } from './todo-list.component';
 
@@ -8,9 +9,9 @@ describe('TodoListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TodoListComponent ]
-    })
-    .compileComponents();
+      imports: [MatListModule],
+      declarations: [TodoListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

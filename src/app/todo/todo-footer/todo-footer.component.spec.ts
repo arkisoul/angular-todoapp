@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { TodoFooterComponent } from './todo-footer.component';
 
@@ -8,6 +9,7 @@ describe('TodoFooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [MatChipsModule],
       declarations: [ TodoFooterComponent ]
     })
     .compileComponents();

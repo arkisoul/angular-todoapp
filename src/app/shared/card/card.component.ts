@@ -11,6 +11,5 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {}
 
   public sayHello(): void {
-    console.log('Say hello')
   }
 }

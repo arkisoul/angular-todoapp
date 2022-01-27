@@ -24,9 +24,6 @@ export class TodoDetailsComponent implements OnInit {
         });
       }
     });
-    this.route.queryParams.subscribe((params) => {
-      console.log('query params', params);
-    });
   }
 
   ngOnInit(): void {}

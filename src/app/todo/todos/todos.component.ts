@@ -21,17 +21,17 @@ export class TodosComponent implements ComponentCanDeactivate {
   public showFooter: boolean = true;
 
   constructor(private todoService: TodoService, private route: ActivatedRoute) {
-    // this.todoService.getAllTodos();
     this.todos$ = this.todoService.getTodos();
     this.completed$ = this.todoService.getCompleted();
     this.inCompleted$ = this.todoService.getIncompleted();
-    this.route.data.subscribe((data) => { console.log(data?.todos?.data); this.todos$ = of<Todo[]>(data?.todos?.data); })
-    const routeData = this.route.snapshot.data
+    this.route.data.subscribe((data) => {
+      this.todos$ = of<Todo[]>(data?.todos?.data);
+    });
   }
 
   canDeactivate(): boolean | Observable<boolean> {
     return false;
-  };
+  }
 
   onCreateNewTodo() {
     if (this.newTodo.title.trim().length === 0) {
