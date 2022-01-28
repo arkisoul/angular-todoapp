@@ -24,4 +24,11 @@ describe('TodoFooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit an event handleClick', () => {
+    const mockFun = spyOn(component.createNewTodo, 'emit');
+    component.handleClick();
+    expect(mockFun.calls.count()).toEqual(1);
+    expect(mockFun).toHaveBeenCalledTimes(1);
+  });
 });

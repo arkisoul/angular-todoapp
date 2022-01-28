@@ -61,7 +61,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.formGroupDirective.resetForm();
   }
 
-  togglePasswordFieldType(event: Event): void {
+  togglePasswordFieldType(): void {
     this.hide = !this.hide;
   }
 }

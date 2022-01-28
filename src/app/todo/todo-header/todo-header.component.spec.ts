@@ -25,4 +25,11 @@ describe('TodoHeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit an event onKeyupEnter', () => {
+    const mockFun = spyOn(component.createNewTodo, 'emit');
+    component.onKeyupEnter();
+    expect(mockFun.calls.count()).toEqual(1);
+    expect(mockFun).toHaveBeenCalledTimes(1);
+  })
 });

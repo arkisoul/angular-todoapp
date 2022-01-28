@@ -115,4 +115,9 @@ describe('SigninComponent', () => {
     tick(3100);
     expect(location.path()).toEqual('/todos');
   }));
+
+  it('should return on signInUser call when form is invalid', () => {
+    component.signInUser();
+    expect(component.signinForm.invalid).toBeTrue();
+  })
 });
