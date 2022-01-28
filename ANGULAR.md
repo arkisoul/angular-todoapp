@@ -46,3 +46,13 @@ One way data binding {{}}
 We can attach events to an element. We can pass the data as well as params to the component class.
 ### Two data binding
 using ngModel
+
+ng generate module path/to/featuremodule --route feature --routing --module app.module 
+ng g m todos --route todos --routing --module app.module
+
+module app/root
+    module dashboard
+        module profile
+        module medication
+        module appointments
+        module events
