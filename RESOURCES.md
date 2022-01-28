@@ -43,3 +43,8 @@ Matchers [here](https://jasmine.github.io/api/edge/matchers.html)
 
 ### Karma
 Official website [here](https://karma-runner.github.io/latest/index.html)
+
+### Routing testing
+Testing angular routing components [here](https://dev.to/this-is-angular/testing-angular-routing-components-with-the-routertestingmodule-4cj0)
+Simple route testing [here](https://codecraft.tv/courses/angular/unit-testing/routing/)
+[Link One](https://codehandbook.org/how-to-unit-test-angular-component-with-service/)

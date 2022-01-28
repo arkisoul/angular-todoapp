@@ -52,7 +52,7 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  togglePasswordFieldType(event: Event): void {
+  togglePasswordFieldType(): void {
     this.hide = !this.hide;
   }
 }

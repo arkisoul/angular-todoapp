@@ -6,22 +6,17 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'todoapp-logout',
   templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.css']
+  styleUrls: ['./logout.component.css'],
 })
 export class LogoutComponent implements OnInit {
+  constructor(private authService: AuthService, private router: Router) {}
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {
+  ngOnInit(): void {
     this.authService.logout().subscribe((response) => {
-      if(response.success) {
+      if (response.success) {
         sessionStorage.removeItem('user');
         this.router.navigate(['/auth/signin']);
       }
     });
-  }
-
-  ngOnInit(): void {
   }
 }
