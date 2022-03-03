@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { from, Observable, of } from 'rxjs';
 import { ComponentCanDeactivate } from 'src/app/guards/pending-changes.guard';
@@ -11,7 +11,7 @@ import { TodoService } from '../todo.service';
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
 })
-export class TodosComponent implements ComponentCanDeactivate {
+export class TodosComponent implements ComponentCanDeactivate, OnInit {
   public title: string = 'Todos';
   public newTodo: Todo = new Todo();
   public todoError: boolean = false;
@@ -21,12 +21,16 @@ export class TodosComponent implements ComponentCanDeactivate {
   public showFooter: boolean = true;
 
   constructor(private todoService: TodoService, private route: ActivatedRoute) {
+    this.todoService.getAllTodos();
+    // this.route.data.subscribe((data) => {
+    //   this.todos$ = of<Todo[]>(data?.todos?.data);
+    // });
+  }
+
+  ngOnInit(): void {
     this.todos$ = this.todoService.getTodos();
     this.completed$ = this.todoService.getCompleted();
     this.inCompleted$ = this.todoService.getIncompleted();
-    this.route.data.subscribe((data) => {
-      this.todos$ = of<Todo[]>(data?.todos?.data);
-    });
   }
 
   canDeactivate(): boolean | Observable<boolean> {

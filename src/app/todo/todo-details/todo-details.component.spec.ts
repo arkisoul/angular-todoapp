@@ -1,7 +1,14 @@
+import { Location } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TodoService } from '../todo.service';
+import { TodosComponent } from '../todos/todos.component';
 
 import { TodoDetailsComponent } from './todo-details.component';
 
@@ -11,7 +18,12 @@ describe('TodoDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientTestingModule],
+      imports: [
+        RouterTestingModule.withRoutes([
+          { path: 'todos', component: TodosComponent },
+        ]),
+        HttpClientTestingModule,
+      ],
       declarations: [TodoDetailsComponent],
       providers: [TodoService],
     }).compileComponents();
@@ -26,4 +38,11 @@ describe('TodoDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should navigate to todos component on goBack fun', fakeAsync(() => {
+    component.goBack();
+    let location: Location = TestBed.inject(Location);
+    tick(100);
+    expect(location.path()).toBe('/todos');
+  }));
 });

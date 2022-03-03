@@ -20,6 +20,6 @@ export class TodoListResolver implements Resolve<ServerResponse<Todo[]>> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<ServerResponse<Todo[]>> {
-    return this.todoService.getAllTodos();
+    return this.todoService.resolveAllTodos();
   }
 }

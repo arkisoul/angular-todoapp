@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { TodosComponent } from './todos/todos.component';
 import { TodoHeaderComponent } from './todo-header/todo-header.component';
@@ -28,6 +29,7 @@ const materialModules = [
   MatDialogModule,
   MatCheckboxModule,
   MatChipsModule,
+  MatToolbarModule,
 ];
 
 @NgModule({

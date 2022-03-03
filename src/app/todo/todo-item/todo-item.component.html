@@ -8,7 +8,7 @@
       [(ngModel)]="todo.title"
     />
   </mat-form-field>
-  <div *ngIf="isDisabled" class="full-width">{{todo.title}}</div>
+  <div *ngIf="isDisabled" class="full-width" [routerLink]="['/todos', todo._id]">{{todo.title}}</div>
   <button mat-icon-button aria-label="Edit's a todo" *ngIf="isDisabled" (click)="edit()">
     <mat-icon>edit</mat-icon>
   </button>

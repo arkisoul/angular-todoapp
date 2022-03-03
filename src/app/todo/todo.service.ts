@@ -80,6 +80,15 @@ export class TodoService {
   }
 
   getAllTodos() {
+    return this.http.get<ServerResponse<Todo[]>>(`${this.API_URL}`).subscribe((response) => {
+      if(response.success) {
+        if(response.data) this.todos$.next(response.data);
+        this.updateSummary();
+      }
+    });
+  }
+
+  resolveAllTodos() {
     return this.http.get<ServerResponse<Todo[]>>(`${this.API_URL}`);
   }
 

@@ -23,6 +23,7 @@ import { TodosComponent } from './todos.component';
 describe('TodosComponent', () => {
   let component: TodosComponent;
   let fixture: ComponentFixture<TodosComponent>;
+  const leftMouseButton = 0;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -67,7 +68,7 @@ describe('TodosComponent', () => {
     let debugElement: DebugElement = fixture.debugElement;
     let logoutBtn: DebugElement = debugElement.query(By.css('a[href="/auth/logout"'))
     let location: Location = TestBed.inject(Location);
-    logoutBtn.triggerEventHandler('click', null);
+    logoutBtn.triggerEventHandler('click', { button: leftMouseButton });
     tick(1000);
     expect(location.path()).toEqual('/auth/logout');
   }));

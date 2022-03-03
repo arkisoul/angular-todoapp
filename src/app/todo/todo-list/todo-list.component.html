@@ -4,14 +4,12 @@
     *ngIf="todos.length > 0; else noTodoBlock"
   >
     <mat-list-item role="listitem" *ngFor="let todo of todos" [ngClass]="{'todo--completed': todo.isCompleted}">
-      <a [routerLink]="['/todos', todo._id]">
-        <todoapp-todo-item
-          [todo]="todo"
-          (deleteTodo)="handleDeleteTodo($event)"
-          (updateTodo)="handleUpdateTodo($event)"
-          (updateTodoStatus)="handleTodoStatusChanged($event)"
-          ></todoapp-todo-item>
-      </a>
+      <todoapp-todo-item
+        [todo]="todo"
+        (deleteTodo)="handleDeleteTodo($event)"
+        (updateTodo)="handleUpdateTodo($event)"
+        (updateTodoStatus)="handleTodoStatusChanged($event)"
+        ></todoapp-todo-item>
         <!-- (click)="navigateToDetails(todo._id)" -->
     </mat-list-item>
   </mat-list>

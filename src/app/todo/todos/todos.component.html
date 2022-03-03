@@ -1,3 +1,16 @@
+<mat-toolbar color="primary">
+  <span>Todo App</span>
+  <span class="spacer"></span>
+  <button
+    mat-button
+    class="logout-icon"
+    aria-label="Example icon-button with heart icon"
+    [routerLink]="['/auth/logout']"
+  >
+    Logout
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
 <section class="todoapp">
   <todoapp-todo-header
     [appTitle]="title"
@@ -17,5 +30,4 @@
     (createNewTodo)="onCreateNewTodo()"
   >
   </todoapp-todo-footer>
-  <a [routerLink]="['/auth/logout']">Logout</a>
 </section>
